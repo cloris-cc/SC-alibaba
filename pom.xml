@@ -12,6 +12,8 @@
         <module>nacos-config</module>
         <module>nacos-discovery</module>
         <module>nacos-ribbon-consumer</module>
+        <module>sentinel-client</module>
+        <module>rocketmq</module>
     </modules>
 
     <properties>

@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+      filter:
+        enabled: false
+  application:
+    name: sentinel-client
+server:
+  port: 8888
+feign:
+  sentinel:
+    enabled: true

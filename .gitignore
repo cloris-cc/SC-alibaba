@@ -1,7 +1,4 @@
 # Project exclude paths
-/nacos-config/target/
-/nacos-discovery/target/
-/nacos-ribbon-consumer/target/
-
 /.idea
 *.iml
+*/target
