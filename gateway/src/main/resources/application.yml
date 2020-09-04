@@ -10,4 +10,15 @@ spring:
     gateway:
       discovery:
         locator:
-          enabled: true # 获取服务中心的其它服务
+          enabled: false # 获取服务中心的其它服务
+
+      routes:
+        - id: useless
+          uri: lb://service-provider
+          predicates:
+            - Path=/echo/{segment} # 访问 path 会自动在前面拼上 {serviceName}
+
+#service-provider:
+#  ribbon:
+#    listOfServers: localhost:8070, localhost:8071
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
