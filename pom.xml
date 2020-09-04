@@ -14,6 +14,7 @@
         <module>nacos-ribbon-consumer</module>
         <module>sentinel-client</module>
         <module>rocketmq</module>
+        <module>gateway</module>
     </modules>
 
     <properties>

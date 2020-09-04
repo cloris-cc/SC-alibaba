@@ -7,7 +7,6 @@ import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.cloud.stream.messaging.Sink;
 import org.springframework.cloud.stream.messaging.Source;
-import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,16 +30,19 @@ public class RocketMQApplication {
         public void consumer(String msg) {
             System.out.println("接受到的消息为：" + msg);
         }
+
+        // 消费指定tag的消息
     }
 
     @RestController
     static class TestController {
         @Autowired
-        private MessageChannel output;
+//        private MessageChannel output;
+        private Source source;
 
         @GetMapping("/test/{msg}")
         public String test(@PathVariable String msg) {
-            output.send(MessageBuilder.withPayload(msg).build());
+            source.output().send(MessageBuilder.withPayload(msg).build());
             System.out.println("消息已发送");
             return msg;
         }
