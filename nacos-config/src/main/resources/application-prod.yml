@@ -6,8 +6,5 @@ spring:
 
 env:
   user:
-    name: test
+    name: prod
     age: 0
-
-common:
-  value: pretty please
