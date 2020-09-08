@@ -1,0 +1,5 @@
+mvn sonar:sonar \
+  -Dsonar.projectKey=SC-alibaba \
+  -Dsonar.host.url=http://localhost:9000 \
+  -Dsonar.login=42c0f2e5fb71cac3ce38392935f47955c8851e75 \
+  -Dsonar.java.binaries=target/sonar
