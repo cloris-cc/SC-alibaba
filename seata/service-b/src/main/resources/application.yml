@@ -1,0 +1,12 @@
+server:
+  port: 8882
+
+spring:
+  application:
+    name: service-b
+
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+
+

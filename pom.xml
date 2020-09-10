@@ -17,6 +17,8 @@
         <module>gateway</module>
         <module>auth</module>
         <module>sleuth-zipkin</module>
+        <module>sharding-sphere</module>
+        <module>seata</module>
     </modules>
 
     <properties>
