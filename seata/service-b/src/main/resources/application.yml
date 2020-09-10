@@ -7,6 +7,29 @@ spring:
 
   cloud:
     nacos:
-      server-addr: localhost:8848
+      discovery:
+        server-addr: localhost:8848
+    alibaba:
+      seata:
+        # 事务组
+        tx-service-group: service-b
+  datasource:
+    url: jdbc:mysql://localhost:3306/seata?serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+
+seata:
+  service:
+    # 事务组所在的 TC 集群名称
+    vgroup-mapping:
+      service-b: default
+
+    # 仅注册中心为 file 时使用 (seata.registry.type = file)
+    grouplist:
+      default: 127.0.0.1:8091
 
