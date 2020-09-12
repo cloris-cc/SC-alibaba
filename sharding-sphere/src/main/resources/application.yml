@@ -4,49 +4,7 @@ spring:
   application:
     name: sharding-sphere
 
-  shardingsphere:
-    # 数据源
-    datasource:
-      names: ds_0,ds_1
-      ds_0:
-        type: com.zaxxer.hikari.HikariDataSource
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbc-url: jdbc:mysql://localhost:3306/demo_ds_0?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
-        username: root
-        password: 123456
-      ds_1:
-        type: com.zaxxer.hikari.HikariDataSource
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbc-url: jdbc:mysql://localhost:3306/demo_ds_0?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
-        username: root
-        password: 123456
-
-    # 分片
-    sharding:
-      binding-tables: t_order,t_order_item
-      broadcast-tables: t_address
-      # 数据源分片策略
-      default-database-strategy:
-        inline:
-          algorithm-expression: ds_$->{user_id % 2}
-          sharding-column: user_id
-      # 表分片策略
-      tables:
-        t_order:
-          actual-data-nodes: ds_$->{0..1}.t_order
-          key-generator:
-            column: order_id
-            props:
-              worker:
-                id: 123
-            type: SNOWFLAKE
-        t_order_item:
-          actual-data-nodes: ds_$->{0..1}.t_order_item
-          key-generator:
-            column: order_item_id
-            props:
-              worker:
-                id: 123
-            type: SNOWFLAKE
-
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
 
