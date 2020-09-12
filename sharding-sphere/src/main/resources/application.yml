@@ -3,8 +3,14 @@ server:
 spring:
   application:
     name: sharding-sphere
+  profiles:
+    active: sharding-databases
 
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
+
+logging:
+  level:
+    cn.teamwang.sharding.sphere.mapper: debug
 
