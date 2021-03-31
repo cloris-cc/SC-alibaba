@@ -1,0 +1,4 @@
+rocketmq:
+  name-server: localhost:9876
+  producer:
+    group: test-group # 一般为业务名(application name)
