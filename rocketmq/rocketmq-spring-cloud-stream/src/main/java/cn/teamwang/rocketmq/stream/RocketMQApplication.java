@@ -1,4 +1,4 @@
-package cn.teamwang.rocketmq;
+package cn.teamwang.rocketmq.stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
