@@ -135,13 +135,17 @@ public class SendMessageTest {
         }, 60000);
     }
 
+
+    /**
+     * delay & retry
+     */
     public void delayTopic() {
         // 默认的 messageDelayLevel = 1s 5s 10s 30s 1m 2m 3m 4m 5m 6m 7m 8m 9m 10m 20m 30m 1h 2h （共18个）
         // 如果想增加或修改延迟时间, 添加/更改 broker 的 conf 文件中该属性(messageDelayLevel)即可。
         // 此外，消息重试的时间也是由该属性决定，重试从 level 0 开始，每重试一次level + 3。死信队列也可以被订阅和消费，并且也会过期。有效期与正常消息相同，均为 3 天，3 天后会被自动删除。因此，请在死信消息产生后的 3天内及时处理。
+        // 超过重投次数，抛出异常，由客户端保证消息不丢。
         rocketMQTemplate.syncSend(Topic.DELAY_TOPIC, MessageBuilder.withPayload("hi").build(), 5000, 0);
     }
-
 
     @RestController
     static class TestController {
