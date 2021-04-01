@@ -1,6 +1,8 @@
 package cn.teamwang.rocketmq.boot;
 
 /**
+ * todo 更新topic功能注释
+ *
  * @author <a href="mailto:clorisforcoding@gmail.com">Jacky Fang</a>
  */
 public class Topic {
@@ -18,11 +20,12 @@ public class Topic {
     public static final String ORDERLY_TOPIC = "orderly-topic";
 
     // 事务消息
-    public static final String TRANSACTION_TOPIC = "transaction-topic";
+    public static final String TRANS_TOPIC = "transaction-topic";
 
+    // 有返回值的消息
+    public static final String REQUEST_TOPIC = "request-topic";
 
-
-
-
+    // 延迟消息(使用有 delayLevel 参数的方法即可)
+    public static final String DELAY_TOPIC  = "delay-topic";
 
 }
