@@ -46,7 +46,7 @@ public class SendMsgRemind {
 
     @Around(value = "execution(* cn.teamwang.rocketmq.boot.service.*.*(..)) " +
             "&& !execution(* cn.teamwang.rocketmq.boot.service.TransactionListener.*(..))")
-    public Object aroundHandle(ProceedingJoinPoint point) {
+    public Object aroundHandle(ProceedingJoinPoint point) throws Throwable {
         // 获取方法参数
         Object args = point.getArgs();
         String className = point.getTarget().getClass().getName();
@@ -59,6 +59,8 @@ public class SendMsgRemind {
 
             log.info("======> 类 {} 单条消息 {} 处理完成", simpleName, args);
         } catch (Throwable throwable) {
+            // 此处只是为了获取异常日志，并不处理异常。如果在这里处理了异常，rocketmq就无法获取异常然后触发重试机制了。
+
             /*
             for (StackTraceElement element : throwable.getStackTrace()) {
                 log.error(element.toString());
@@ -74,6 +76,8 @@ public class SendMsgRemind {
 
             log.error("======> 类 {} 单条消息 {} 处理失败", simpleName, args);
             log.error(joiner.toString());
+
+            throw throwable;
         }
 
         return result;
