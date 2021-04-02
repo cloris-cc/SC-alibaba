@@ -25,7 +25,8 @@ public class Topic {
     // 有返回值的消息
     public static final String REQUEST_TOPIC = "request-topic";
 
-    // 延迟消息(使用有 delayLevel 参数的方法即可)
+    // 延迟消息(使用有 delayLevel 参数的方法即可) + 重试
     public static final String DELAY_TOPIC  = "delay-topic";
+
 
 }
