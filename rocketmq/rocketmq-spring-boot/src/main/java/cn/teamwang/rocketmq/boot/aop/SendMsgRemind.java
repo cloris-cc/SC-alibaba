@@ -17,17 +17,6 @@ import java.util.StringJoiner;
 public class SendMsgRemind {
 
 /*
-    @Before(value = "execution(void cn.teamwang.rocketmq.boot.SendMessageTest.*(..))")
-    public void beforeSend() {
-        log.info("======> 准备发送消息");
-    }
-
-    @After(value = "execution(void cn.teamwang.rocketmq.boot.SendMessageTest.*(..))")
-    public void afterSend() {
-        log.info("======> 消息发送完成");
-    }
-*/
-/*
     @Around(value = "execution(void cn.teamwang.rocketmq.boot.SendMessageTest.*(..))")
     public Object send(ProceedingJoinPoint point) {
         Object result = null;
@@ -61,21 +50,8 @@ public class SendMsgRemind {
         } catch (Throwable throwable) {
             // 此处只是为了获取异常日志，并不处理异常。如果在这里处理了异常，rocketmq就无法获取异常然后触发重试机制了。
 
-            /*
-            for (StackTraceElement element : throwable.getStackTrace()) {
-                log.error(element.toString());
-            }
-            */
-
-            // 同线程不安全的 StringBuilder
-            StringJoiner joiner = new StringJoiner("\n");
-            joiner.add(throwable.getMessage());
-            for (StackTraceElement element : throwable.getStackTrace()) {
-                joiner.add(element.toString());
-            }
-
             log.error("======> 类 {} 单条消息 {} 处理失败", simpleName, args);
-            log.error(joiner.toString());
+            log.error(throwable.getMessage(), throwable);
 
             throw throwable;
         }
